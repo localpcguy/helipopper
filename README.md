@@ -60,6 +60,28 @@ bootstrapApplication(AppComponent, {
 })
 ```
 
+> 📝 NOTE: (LEGACY ONLY) If still using an Angular Module to bootstrap with v9+ of Hellipopper or you get the `Type 'EnvironmentProviders' is not assignable to type 'Provider'.` error, you can provide the Tippy Config manually like so:
+
+```ts
+import { TIPPY_CONFIG, tooltipVariation, popperVariation } from '@ngneat/helipopper';
+
+@NgModule({
+  providers: [
+    {
+      provide: TIPPY_CONFIG,
+      useValue: {
+        defaultVariation: 'tooltip',
+        variations: {
+          tooltip: tooltipVariation,
+          popper: popperVariation,
+        }
+      }
+    }
+  ],
+  bootstrap: [AppComponent],
+})
+```
+
 Add the styles you want to `styles.scss`:
 
 ```scss
